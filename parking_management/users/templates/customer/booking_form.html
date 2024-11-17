@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Book a Parking Slot{% endblock %}
+
+{% block content %}
+<h1>Book a Parking Slot</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="slot">Select Slot:</label>
+    <select name="slot" id="slot">
+        {% for slot in slots %}
+            <option value="{{ slot.id }}">{{ slot.slot_number }} ({{ slot.status }})</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="duration">Duration (in hours):</label>
+    <input type="number" name="duration" id="duration" min="1" required>
+    <br>
+    <button type="submit">Book Slot</button>
+</form>
+{% endblock %}
