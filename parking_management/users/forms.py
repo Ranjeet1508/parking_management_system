@@ -11,7 +11,6 @@ class BaseUserRegistrationForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
 
 # Form for Customers
-
 class CustomerRegistrationForm(BaseUserRegistrationForm):
     def save(self, commit = True):
         user = super().save(commit=False)

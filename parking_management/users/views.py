@@ -13,10 +13,12 @@ def admin_dashboard(request):
 
 def register_customer(request):
     if request.method == 'POST':
+        print("Form Submitted")
         form = CustomerRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            print("form submitted successfully")
+            # return redirect('login')
     else:
         form = CustomerRegistrationForm()        
     return render(request, 'customer/register_customer.html', {'form': form})
